@@ -56,10 +56,10 @@ AOCH = st.sidebar.selectbox("Another Organ Complication History:", options=[0, 1
 ACH = st.sidebar.selectbox("Abdominal Complication History\n(Obstruction, Mass, Infection):", options=[0, 1], format_func=lambda x: 'Yes (1)' if x == 0 else 'No (0)')
 
 # Total Iron-Binding Capacity (umol/l) input
-TIBC = st.sidebar.number_input("TIBC (umol/l):", min_value=0, max_value=600, value=60.3)
+TIBC = st.sidebar.number_input("TIBC (umol/l):", min_value=0, max_value=600, value=60)
 
 # Fibrinogen input
-Fib = st.sidebar.number_input("Fibrinogen (g/L):", min_value=0, max_value=100, value=2.61)
+Fib = st.sidebar.number_input("Fibrinogen (g/L):", min_value=0, max_value=100, value=2)
 
 # Nutritional Support Therapy input
 NST = st.sidebar.selectbox("Nutritional Support Therapy:", options=[0, 1], format_func=lambda x: 'Yes (1)' if x == 0 else 'No (0)')
@@ -131,4 +131,5 @@ if st.button("Make Prediction"):  # 如果点击了预测按钮
     # Show the plot
 
     st.pyplot(plt)  # 显示图表
+
 

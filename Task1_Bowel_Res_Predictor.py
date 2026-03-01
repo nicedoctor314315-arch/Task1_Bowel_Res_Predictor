@@ -26,7 +26,7 @@ st.title("Bowel Resections Predictor for CD patient in coming 12 months")
 st.sidebar.header("Input Sample Data")  # 侧边栏输入样本数据
 
 # Gender input
-sex = st.sidebar.selectbox("Gender (1=Male, 2=Female):", options=[1, 2], format_func=lambda x: 'Female (2)' if x == 0 else 'Male (1)')  # 性别选择框
+sex = st.sidebar.selectbox("Gender (1=Male, 2=Female):", options=[1, 2], format_func=lambda x: 'Male (1)' if x == 1 else 'Female (2)')  # 性别选择框
 
 # Age input
 age = st.sidebar.number_input("Age:", min_value=1, max_value=120, value=50)  # 年龄输入框
@@ -87,7 +87,7 @@ if st.button("Make Prediction"):  # 如果点击了预测按钮
             "This indicates an increased likelihood of bowel damage progression and/or complications that may require surgical intervention."
             "The prediction is intended for risk stratification and decision support and should be interpreted alongside clinical assessment and objective disease activity measures."
             "We recommend closer surveillance and timely reassessment for stricturing/penetrating behavior, nutritional status, and ongoing inflammatory activity, with consideration of treatment escalation and/or early colorectal surgical input where appropriate. "
-"            Urgent evaluation is warranted if the patient develops severe abdominal pain, signs of obstruction, persistent high fever/sepsis concern, or significant gastrointestinal bleeding."
+            "Urgent evaluation is warranted if the patient develops severe abdominal pain, signs of obstruction, persistent high fever/sepsis concern, or significant gastrointestinal bleeding."
         )  # 如果预测会发生并发症，给出相关建议
     else:  # 如果预测不会
         advice = (
@@ -129,4 +129,5 @@ if st.button("Make Prediction"):  # 如果点击了预测按钮
     plt.gca().spines['right'].set_visible(False)  # 隐藏右边框
 
     # Show the plot
+
     st.pyplot(plt)  # 显示图表

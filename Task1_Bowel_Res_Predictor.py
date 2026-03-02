@@ -8,11 +8,6 @@ import matplotlib.pyplot as plt
 model = joblib.load('Task1_Bowel_Resections_pred.pkl')  # 加载训练好的RF模型
 
 # Define the feature options
-GSH_options = {
-    0: 'No history of gastrointestinal surgery',  # 无胃肠手术史
-    1: 'history of gastrointestinal surgery',  # 有胃肠手术史
-}
-
 DB_options = {
     0: 'No-stricturing & No-penetrating',  # 非狭窄非穿透
     1: 'Stricturing',  # 狭窄
@@ -29,16 +24,16 @@ st.sidebar.header("Input Sample Data")  # 侧边栏输入样本数据
 sex = st.sidebar.selectbox("Gender (1=Male, 2=Female):", options=[1, 2], format_func=lambda x: 'Male (1)' if x == 1 else 'Female (2)')  # 性别选择框
 
 # Age input
-age = st.sidebar.number_input("Age:", min_value=1, max_value=120, value=21)  # 年龄输入框
+age = st.sidebar.number_input("Age:", min_value=1.0, max_value=120.0, value=21.0)  # 年龄输入框
 
 # Symptoms to diagnosis input
-std = st.sidebar.number_input("Symptoms to diagnosis (Months):", min_value=0, max_value=600, value=6)
+std = st.sidebar.number_input("Symptoms to diagnosis (Months):", min_value=0.0, max_value=600.0, value=6.0)
 
 # Duration input
-dur = st.sidebar.number_input("Total Duration:", min_value=0, max_value=600, value=6)
+dur = st.sidebar.number_input("Total Duration:", min_value=0.0, max_value=600.0, value=6.0)
 
 # Gastrointestinal_Surgery_History input
-GSH = st.sidebar.selectbox("Gastrointestinal Surgery History:", options=list(GSH_options.keys()), format_func=lambda x: GSH_options[x])
+GSH = st.sidebar.selectbox("Gastrointestinal Surgery History:", options=[0, 1], format_func=lambda x: 'Yes (1)' if x == 0 else 'No (0)')
 
 # Disease Behavior input
 DB = st.sidebar.selectbox("Disease Behavior:", options=list(DB_options.keys()), format_func=lambda x: DB_options[x])
@@ -56,10 +51,10 @@ AOCH = st.sidebar.selectbox("Another Organ Complication History:", options=[0, 1
 ACH = st.sidebar.selectbox("Abdominal Complication History\n(Obstruction, Mass, Infection):", options=[0, 1], format_func=lambda x: 'Yes (1)' if x == 0 else 'No (0)')
 
 # Total Iron-Binding Capacity (umol/l) input
-TIBC = st.sidebar.number_input("TIBC (umol/l):", min_value=0, max_value=600, value=60)
+TIBC = st.sidebar.number_input("TIBC (umol/l):", min_value=0.0, max_value=600.0, value=60.0)
 
 # Fibrinogen input
-Fib = st.sidebar.number_input("Fibrinogen (g/L):", min_value=0, max_value=100, value=2)
+Fib = st.sidebar.number_input("Fibrinogen (g/L):", min_value=0.0, max_value=100.0, value=2.0)
 
 # Nutritional Support Therapy input
 NST = st.sidebar.selectbox("Nutritional Support Therapy:", options=[0, 1], format_func=lambda x: 'Yes (1)' if x == 0 else 'No (0)')
@@ -131,5 +126,6 @@ if st.button("Make Prediction"):  # 如果点击了预测按钮
     # Show the plot
 
     st.pyplot(plt)  # 显示图表
+
 
 
